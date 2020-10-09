@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 12:10:20 by jraty             #+#    #+#             */
-/*   Updated: 2020/10/09 16:36:28 by jraty            ###   ########.fr       */
+/*   Updated: 2020/10/09 16:49:43 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,8 @@ int		main(int argc, char **argv)
 			}
 		}
 		mlx_put_image_to_window(mlx_ptr, win_ptr, image, 0, 0);
-		mlx_pixel_put(mlx_ptr, win_ptr, x_coord[5], 120, 0xFFFFFF);							// TEST DRAW INSIDE IMAGE - REMOVE
-		mlx_pixel_put(mlx_ptr, win_ptr, 120, x_coord[5], 0xFFFFFF);							// TEST DRAW INSIDE IMAGE - REMOVE
+		mlx_pixel_put(mlx_ptr, win_ptr, x_coord[4], 120, 0xFFFFFF);							// TEST DRAW INSIDE IMAGE - REMOVE
+		mlx_pixel_put(mlx_ptr, win_ptr, 120, x_coord[4], 0xFFFFFF);							// TEST DRAW INSIDE IMAGE - REMOVE
 		i = 0;																				// TEST DRAW INSIDE IMAGE - REMOVE
 		while (x_coord[i])																	// TEST DRAW INSIDE IMAGE - REMOVE
 		{																					// TEST DRAW INSIDE IMAGE - REMOVE
