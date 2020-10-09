@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 12:10:20 by jraty             #+#    #+#             */
-/*   Updated: 2020/10/09 16:03:33 by jraty            ###   ########.fr       */
+/*   Updated: 2020/10/09 13:30:51 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,7 @@ int		main(int argc, char **argv)
 	int		x;
 	int		y;
 	char	**split;
-	int		x_coord[1024];
-	int		i;
 
-	i = 0;
 //	printf("endian is: [%d]\n", endian);													// TEST - REMOVE
 	if (argc == 2)
 	{
@@ -65,20 +62,9 @@ int		main(int argc, char **argv)
 //			color = 0xFFFFFF; // White														// TEST - REMOVE
 			split = ft_strsplit(line, ' ');
 			while (*split)
-			{
 //				printf("%s ", split[i++]);
-//				printf("%d", ft_getnbr(*split++));
-				x_coord[i++] = ft_getnbr(*split++);
-			}
-//			i++;
-			x_coord[i] = '\0';
-//			printf("x_coord: %d ", x_coord[i++]);
-			i = 0;
-			while (x_coord[i])
-			{
-				printf("x_coord[%d]: %d\n", i, x_coord[i]);
-				i++;
-			}
+				printf("%d", ft_getnbr(*split++));
+			printf("\n");
 			free(*split);
 //			printf("\033[32m%s\033[0m\n", line);											// TEST - REMOVE
 			free (line);																	// TEST - REMOVE
