@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 12:10:20 by jraty             #+#    #+#             */
-/*   Updated: 2020/10/09 16:49:43 by jraty            ###   ########.fr       */
+/*   Updated: 2020/10/12 16:41:00 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ int		main(int argc, char **argv)
 	int		x;
 	int		y;
 	char	**split;
-	int		x_coord[1024];
+	int		elev[1024];
 	int		i;
+	int		length;
 
 	i = 0;
 //	printf("endian is: [%d]\n", endian);													// TEST - REMOVE
@@ -63,21 +64,26 @@ int		main(int argc, char **argv)
 //			color = 0x00FF00; // Lime														// TEST - REMOVE
 			color = 0x000000; // Black														// TEST - REMOVE
 //			color = 0xFFFFFF; // White														// TEST - REMOVE
+			printf("\033[32m%s\033[0m\n", line);
+			length = ft_strlenws(line, ' ');
+			printf("line length is: %d\n", length);
 			split = ft_strsplit(line, ' ');
 			while (*split)
 			{
 //				printf("%s ", split[i++]);
 //				printf("%d", ft_getnbr(*split++));
-				x_coord[i++] = ft_getnbr(*split++);
+				elev[i++] = ft_getnbr(*split++);
 			}
 //			i++;
-			x_coord[i] = '\0';
+			elev[i] = '\0';
 		}
-//		printf("x_coord: %d ", x_coord[i++]);
+//		printf("elev: %d ", elev[i++]);
 		i = 0;
-		while (x_coord[i])
+		while (elev[i])
 		{
-			printf("x_coord[%d]: %d\n", i, x_coord[i]);
+//			coord->z = elev[i];
+			printf("elev[%d]: %d\n", i, elev[i]);
+//			printf("coord->z[%d]: %d\n", i, coord->z);
 			i++;
 		}
 		free(*split);
@@ -119,14 +125,24 @@ int		main(int argc, char **argv)
 			}
 		}
 		mlx_put_image_to_window(mlx_ptr, win_ptr, image, 0, 0);
-		mlx_pixel_put(mlx_ptr, win_ptr, x_coord[4], 120, 0xFFFFFF);							// TEST DRAW INSIDE IMAGE - REMOVE
-		mlx_pixel_put(mlx_ptr, win_ptr, 120, x_coord[4], 0xFFFFFF);							// TEST DRAW INSIDE IMAGE - REMOVE
+		mlx_pixel_put(mlx_ptr, win_ptr, elev[4], 120, 0xFFFFFF);
+		mlx_pixel_put(mlx_ptr, win_ptr, elev[4], 240, 0xFFFFFF);
+		mlx_pixel_put(mlx_ptr, win_ptr, elev[4], -240, 0xFFFFFF);									// TEST DRAW INSIDE IMAGE - REMOVE
+		mlx_pixel_put(mlx_ptr, win_ptr, 120, elev[4], 0xFFFFFF);							// TEST DRAW INSIDE IMAGE - REMOVE
 		i = 0;																				// TEST DRAW INSIDE IMAGE - REMOVE
-		while (x_coord[i])																	// TEST DRAW INSIDE IMAGE - REMOVE
+		while (elev[i])																	// TEST DRAW INSIDE IMAGE - REMOVE
 		{																					// TEST DRAW INSIDE IMAGE - REMOVE
-			mlx_pixel_put(mlx_ptr, win_ptr, x_coord[i], x_coord[i], 0xFFFFFF);				// TEST DRAW INSIDE IMAGE - REMOVE
+			mlx_pixel_put(mlx_ptr, win_ptr, elev[i], elev[i], 0xFFFFFF);				// TEST DRAW INSIDE IMAGE - REMOVE
 			i++;																			// TEST DRAW INSIDE IMAGE - REMOVE
 		}																					// TEST DRAW INSIDE IMAGE - REMOVE
+//		draw_line(mlx_ptr, win_ptr, 640, 360, 0, 0, 0xFFFFFF);
+		mlx_pixel_put(mlx_ptr, win_ptr, 0, 0, 0x00FF00);;
+		draw_line(mlx_ptr, win_ptr, 240, 100, 240, 200, 0xFFFFFF);
+		draw_line(mlx_ptr, win_ptr, 400, 100, 400, 200, 0xFFFFFF);
+		draw_line(mlx_ptr, win_ptr, 240, 100, 400, 100, 0xFFFFFF);
+		draw_line(mlx_ptr, win_ptr, 240, 200, 400, 200, 0xFFFFFF);
+		draw_line(mlx_ptr, win_ptr, 240, 100, 400, 200, 0xFFFFFF);
+		draw_line(mlx_ptr, win_ptr, 240, 200, 400, 100, 0xFFFFFF);
 		mlx_loop(mlx_ptr);
 	}
 	ft_putstr("Usage : ./fdf <filename> [ case_size z_size ]\n");
