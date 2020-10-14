@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 12:10:20 by jraty             #+#    #+#             */
-/*   Updated: 2020/10/14 17:41:52 by jraty            ###   ########.fr       */
+/*   Updated: 2020/10/14 17:44:00 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		main(int argc, char **argv)
 		fd = open(argv[1], O_RDONLY);
 		if (fd < 0)
 		{
-			printf("No file %s\n", argv[1]);
+			printf("No file %s\n", argv[1]);												// REMOVE PRINTF !!
 			return (0);
 		}
 		if (!map_validator(fd))
