@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 12:10:20 by jraty             #+#    #+#             */
-/*   Updated: 2020/10/12 16:41:00 by jraty            ###   ########.fr       */
+/*   Updated: 2020/10/14 14:06:54 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 #include "fdf.h"
 
-int		deal_mouse(int mouse, void *param)
+int		deal_mouse(int button, int x, int y, void *param)
 {
 	ft_putnbr(3);
 //	mlx_pixel_put(mlx_ptr, win_ptr, 50, 50, 212);											// TEST - REMOVE
@@ -49,12 +49,15 @@ int		main(int argc, char **argv)
 	char	**split;
 	int		elev[1024];
 	int		i;
-	int		length;
+//	int		length;
 
 	i = 0;
 //	printf("endian is: [%d]\n", endian);													// TEST - REMOVE
 	if (argc == 2)
 	{
+		fd = open(argv[1], O_RDONLY);
+		if (!map_validator(fd))
+			return (0);
 		fd = open(argv[1], O_RDONLY);
 		while (get_next_line(fd, &line) == 1)
 		{
@@ -65,8 +68,8 @@ int		main(int argc, char **argv)
 			color = 0x000000; // Black														// TEST - REMOVE
 //			color = 0xFFFFFF; // White														// TEST - REMOVE
 			printf("\033[32m%s\033[0m\n", line);
-			length = ft_strlenws(line, ' ');
-			printf("line length is: %d\n", length);
+//			length = ft_strlenws(line, ' ');
+//			printf("line length is: %d\n", length);
 			split = ft_strsplit(line, ' ');
 			while (*split)
 			{

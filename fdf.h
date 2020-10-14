@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 15:05:55 by jraty             #+#    #+#             */
-/*   Updated: 2020/10/12 15:40:48 by jraty            ###   ########.fr       */
+/*   Updated: 2020/10/14 14:04:34 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct	s_keys
 	int				esc:1;
 }					t_keys;
 
+int					map_validator(int fd);
 int					ft_strlenws(const char *s, char c);
 int					draw_line(void *mlx, void *win, int beginX, int beginY, int endX, int endY, int color);
 
