@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 12:10:20 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/02 14:39:57 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/02 15:23:48 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,23 @@
 int		deal_mouse(int button, int x, int y, void *param)
 {
 	ft_putnbr(3);
-//	mlx_pixel_put(mlx_ptr, win_ptr, 50, 50, 212);											// TEST - REMOVE
+//	mlx_pixel_put(mlx, win, 50, 50, 212);											// TEST - REMOVE
 	return (0);
 }
 
 int		deal_key(int key, void *param)
 {
 	ft_putchar('X');
-//	mlx_pixel_put(mlx_ptr, win_ptr, 50, 50, 212);											// TEST - REMOVE
+//	mlx_pixel_put(mlx, win, 50, 50, 212);											// TEST - REMOVE
 	return (0);
 }
 
 int		main(int argc, char **argv)
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
+	struct	t_stats;
+	
+	void	*mlx;
+	void	*win;
 	int		color;
 	int		fd;
 	char	*line;
@@ -60,14 +62,14 @@ int		main(int argc, char **argv)
 			printf("\033[32m%s\033[0m\n", line);
 		}
 		free (line);					// TEST - REMOVE
-		mlx_ptr = mlx_init();
-		win_ptr = mlx_new_window(mlx_ptr, 640, 360, "my Fdf");
-		mlx_key_hook(win_ptr, deal_key, (void*)0);
-		mlx_mouse_hook(win_ptr, deal_mouse, (void*)0);
-		background(mlx_ptr, win_ptr, YELLOW);
-		// mlx_pixel_put(mlx_ptr, win_ptr, 200, 200, RED);;
-		draw_line(mlx_ptr, win_ptr, 240, 100, 370, 20, ORANGE);
-		mlx_loop(mlx_ptr);
+		mlx = mlx_init();
+		win = mlx_new_window(mlx, 640, 360, "my Fdf");
+		mlx_key_hook(win, deal_key, (void*)0);
+		mlx_mouse_hook(win, deal_mouse, (void*)0);
+		background(mlx, win, BLUE);
+		// mlx_pixel_put(mlx, win, 200, 200, RED);;
+		draw_line(mlx, win, 240, 100, 370, 20, RED);
+		mlx_loop(mlx);
 	}
 	ft_putstr("Usage : ./fdf <filename> [ case_size z_size ]\n");
 }

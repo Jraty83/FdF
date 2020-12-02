@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 15:05:55 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/02 14:32:30 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/02 15:22:39 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,23 @@
 #include <mlx.h>
 #include <stdio.h>																			// FOR PERROR AND STRERROR
 
-typedef struct		s_window
+typedef struct		s_stats
 {
-	void			*mlx;
-	void			*win;
-}					t_window;
-
-typedef struct		s_coord
-{
-	int				x[1024];
-	int				y[1024];
-	int				z[1024];
-	struct s_coord	*next;
-}					t_coord;
+	void	*mlx;
+	void	*win;
+	void	*image;	// only for background.c ?
+	char	*buffer;	// only for background.c ?
+	char	*line;
+	int		fd;
+	int		color;
+	int		pixel_bits;	// only for background.c ?
+	int		line_bytes;	// only for background.c ?
+	int		endian;	// only for background.c ?
+	int		pixel;	// only for background.c ?
+	int		x;	// only for background.c ?
+	int		y;	// only for background.c ?
+	int		i;
+}					t_stats;
 
 # define ESC 27			// esc has an ascii value of 27
 
@@ -44,11 +48,6 @@ typedef struct		s_coord
 # define YELLOW	0xFFFF00
 # define PURPLE	0x8000FF
 # define ORANGE	0xFF8000
-
-typedef struct	s_keys
-{
-	int				esc:1;
-}					t_keys;
 
 int					map_validator(int fd);
 int					ft_strlenws(const char *s, char c);
