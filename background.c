@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 14:09:06 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/02 14:39:36 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/02 15:17:11 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	background(void *mlx_ptr, void *win_ptr, int color)
 		int		line_bytes;
 		int		endian;
 		int		pixel;
-		char	*line;
 		int		x;
 		int		y;
 
