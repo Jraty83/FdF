@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 12:10:20 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/03 11:41:57 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/03 12:18:56 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int		main(int argc, char **argv)
 		{
 			printf("\033[32m%s\033[0m\n", line);
 		}
-		free (line);					// TEST - REMOVE
+		free(line);					// TEST - REMOVE
 		data->mlx = mlx_init();
 		data->win = mlx_new_window(data->mlx, 640, 360, "my Fdf");
 		mlx_key_hook(data->win, deal_key, (void*)0);
