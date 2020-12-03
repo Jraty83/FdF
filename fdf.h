@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 15:05:55 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/02 15:22:39 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/03 11:30:27 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <mlx.h>
 #include <stdio.h>																			// FOR PERROR AND STRERROR
 
-typedef struct		s_stats
+typedef struct		s_data
 {
 	void	*mlx;
 	void	*win;
@@ -35,7 +35,7 @@ typedef struct		s_stats
 	int		x;	// only for background.c ?
 	int		y;	// only for background.c ?
 	int		i;
-}					t_stats;
+}					t_data;
 
 # define ESC 27			// esc has an ascii value of 27
 
