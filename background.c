@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 14:09:06 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/03 13:03:52 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/03 13:36:08 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	background(t_data *data)
 		int		x;
 		int		y;
 
-		// data->color = YELLOW;
+//		data->color = YELLOW;
 		image = mlx_new_image(data->mlx, 640, 360);
 		buffer = mlx_get_data_addr(image, &pixel_bits, &line_bytes, &endian);
 		if (pixel_bits != 32)

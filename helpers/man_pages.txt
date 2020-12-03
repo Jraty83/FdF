@@ -1,0 +1,6 @@
+man /Users/janne/lib/minilibx/man/man3/mlx.1
+----------------------------------
+man /Users/janne/lib/minilibx/man/man3/mlx_loop.1
+man /Users/janne/lib/minilibx/man/man3/mlx_new_image.1
+man /Users/janne/lib/minilibx/man/man3/mlx_new_window.1
+man /Users/janne/lib/minilibx/man/man3/mlx_pixel_put.1

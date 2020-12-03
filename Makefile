@@ -6,13 +6,13 @@
 #    By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/07 13:21:08 by jraty             #+#    #+#              #
-#    Updated: 2020/12/02 14:32:58 by jraty            ###   ########.fr        #
+#    Updated: 2020/12/03 14:05:26 by jraty            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
-SRCS = main.c draw_line.c map_validator.c ft_strlenws.c background.c \
+SRCS = main.c draw_line.c map_validator.c background.c \
 
 OBJS = $(SRCS:.c=.o)
 
