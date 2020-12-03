@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 12:10:20 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/03 12:18:56 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/03 13:03:23 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,11 @@ int		main(int argc, char **argv)
 {
 	t_data	*data;
 	
-	int		color;	// MOVE
 	int		fd;
 	char	*line;	// MOVE TO READER.C
 	int		i;		// MOVE
 
 	i = 0;
-	color = RED;
 	if ((data = (t_data *)malloc(sizeof(t_data))) == NULL)
 		return (1);
 	if (argc == 2)
@@ -67,7 +65,7 @@ int		main(int argc, char **argv)
 		data->win = mlx_new_window(data->mlx, 640, 360, "my Fdf");
 		mlx_key_hook(data->win, deal_key, (void*)0);
 		mlx_mouse_hook(data->win, deal_mouse, (void*)0);
-		background(data->mlx, data->win, BLUE);
+		background(data);
 		// data_pixel_put(data, win, 200, 200, RED);;
 		draw_line(data->mlx, data->win, 240, 100, 370, 20, RED);
 		mlx_loop(data->mlx);

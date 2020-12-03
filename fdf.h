@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 15:05:55 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/03 11:30:27 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/03 12:43:53 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ typedef struct		s_data
 int					map_validator(int fd);
 int					ft_strlenws(const char *s, char c);
 int					draw_line(void *mlx, void *win, int beginX, int beginY, int endX, int endY, int color);
-void				background(void *mlx_ptr, void *win_ptr, int color);
+void				background(t_data *data);
 
 #endif
