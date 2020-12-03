@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 10:05:27 by jraty             #+#    #+#             */
-/*   Updated: 2020/07/13 12:07:35 by jraty            ###   ########.fr       */
+/*   Updated: 2020/09/16 14:10:25 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@ void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
 	t_list		*temp;
 
-	temp = *alst;
-	while (temp)
+	while (*alst)
 	{
-		del(temp->content, temp->content_size);
-		temp = temp->next;
+		temp = (*alst)->next;
+		del((*alst)->content, (*alst)->content_size);
+		free(*alst);
+		*alst = temp;
 	}
 	*alst = NULL;
 }

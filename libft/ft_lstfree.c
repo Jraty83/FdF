@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstfree.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/15 14:00:41 by jraty             #+#    #+#             */
-/*   Updated: 2020/08/17 10:38:43 by janne            ###   ########.fr       */
+/*   Created: 2020/09/16 15:04:34 by jraty             #+#    #+#             */
+/*   Updated: 2020/09/16 15:06:22 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 8
-# define FD 4097
+void	ft_lstfree(t_list **ptr)
+{
+	t_list	*temp;
 
-# include "libft.h"
-
-int		get_next_line(const int fd, char **line);
-
-#endif
+	while (*ptr)
+	{
+		temp = (*ptr)->next;
+		free(*ptr);
+		*ptr = temp;
+	}
+	*ptr = NULL;
+}
