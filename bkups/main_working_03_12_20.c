@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 12:10:20 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/03 11:41:57 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/03 15:08:03 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,17 @@ int		main(int argc, char **argv)
 {
 	t_data	*data;
 	
-	int		color;	// MOVE
 	int		fd;
 	char	*line;	// MOVE TO READER.C
 	int		i;		// MOVE
 
 	i = 0;
-	color = RED;
 	if ((data = (t_data *)malloc(sizeof(t_data))) == NULL)
 		return (1);
 	if (argc == 2)
 	{
-		fd = open(argv[1], O_RDONLY);
-		if (fd < 0)
-		{
-			ft_putendl_fd("Invalid file", 2);
-			// printf("No file %s\n", argv[1]);			// REMOVE PRINTF !!
-			return (0);
-		}
+		if ((fd = open(argv[1], O_RDONLY)) < 0)
+			ft_error(0);
 		// READ FUNCTION ? NO MORE OPEN OR GNL AFTER
 		if (!map_validator(fd))
 			return (0);
@@ -62,17 +55,17 @@ int		main(int argc, char **argv)
 		{
 			printf("\033[32m%s\033[0m\n", line);
 		}
-		free (line);					// TEST - REMOVE
+		free(line);
 		data->mlx = mlx_init();
 		data->win = mlx_new_window(data->mlx, 640, 360, "my Fdf");
 		mlx_key_hook(data->win, deal_key, (void*)0);
 		mlx_mouse_hook(data->win, deal_mouse, (void*)0);
-		background(data->mlx, data->win, BLUE);
+		background(data);
 		// data_pixel_put(data, win, 200, 200, RED);;
 		draw_line(data->mlx, data->win, 240, 100, 370, 20, RED);
 		mlx_loop(data->mlx);
 	}
-	ft_putendl_fd("Usage : ./fdf <filename> [ case_size z_size ]", 2);
+	ft_putendl_fd("Usage : ./fdf <filename>", 2);
 }
 
 // how to pass parameters to data_pixel_put using data_key_hook's (void*)0 ?

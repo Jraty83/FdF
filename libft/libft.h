@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 11:13:42 by jraty             #+#    #+#             */
-/*   Updated: 2020/10/14 15:59:57 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/03 14:50:26 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,6 @@ int					get_next_line(const int fd, char **line);
 int					ft_sqrt_roundup(int nb);
 int					ft_getnbr(char *str);
 int					ft_abs(int n);
+void				ft_error(int err);
 
 #endif

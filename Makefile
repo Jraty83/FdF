@@ -6,7 +6,7 @@
 #    By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/07 13:21:08 by jraty             #+#    #+#              #
-#    Updated: 2020/12/03 14:05:26 by jraty            ###   ########.fr        #
+#    Updated: 2020/12/03 15:17:15 by jraty            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ LIBDIR = libft
 
 COMPFLAGS = -Wall -Wextra -Werror
 
-LIBFLAGS = -L /Users/janne/lib -lmlx -I /usr/local/X11/include -L /usr/X11/lib -lX11 -lXext -framework OpenGL -framework AppKit
+LIBFLAGS = -L /Users/janne/lib -lmlx -I /usr/local/include/X11 -L /usr/X11/lib -lX11 -lXext -framework OpenGL -framework AppKit
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 13:50:00 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/03 14:04:30 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/03 15:03:49 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,7 @@ int		map_validator(int fd)
 	while (get_next_line(fd, &line) == 1)
 		length[end++] = ft_strlenmap(line, ' ');
 	if (--end < 0)
-	{
-		ft_putendl("No data found.");
-		return (0);
-	}
+		ft_error(1);
 	while (end)
 	{
 		if (length[end] != length[end - 1])

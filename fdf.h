@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 15:05:55 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/03 14:05:04 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/03 14:48:22 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <fcntl.h>
 #include <math.h>
 #include <mlx.h>
-#include <stdio.h>																			// FOR PERROR AND STRERROR
+#include <stdio.h>	// REMOVE WHEN FINISHED !!
 
 typedef struct		s_data
 {
