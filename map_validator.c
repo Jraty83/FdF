@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 13:50:00 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/03 15:03:49 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/03 15:56:23 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,14 @@ int		map_validator(int fd)
 {
 	char	*line;
 	int		end;
-	int		length[1024];
+	int		length[50000];
 
 	end = 0;
 	while (get_next_line(fd, &line) == 1)
+	{
+		printf("\033[32m%s\033[0m\n", line);
 		length[end++] = ft_strlenmap(line, ' ');
+	}
 	if (--end < 0)
 		ft_error(1);
 	while (end)
