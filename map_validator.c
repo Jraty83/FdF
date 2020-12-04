@@ -6,13 +6,13 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 13:50:00 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/03 15:56:23 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/04 11:44:22 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int			ft_strlenmap(const char *s, char c)
+int			ft_strlenmap(const char *s)
 {
 	int		i;
 	int		k;
@@ -21,12 +21,14 @@ int			ft_strlenmap(const char *s, char c)
 	k = 0;
 	while (s[i])
 	{
-		while (s[i] && (s[i] == c || s[i] == '-'))
+		while ((s[i] && s[i] == ' ' || s[i] == '-'))
 			i++;
-		k++;
-		while (s[i] && s[i] != c && s[i] != '-')
+		if (s[i] >= '0' && s[i] <= '9')
+			k++;
+		while (s[i] && s[i] != ' ' && s[i] != '-')
 			i++;
 	}
+	printf("strlen: %d\ti is: %d\t", k, i);
 	return (k);
 }
 
@@ -39,8 +41,8 @@ int		map_validator(int fd)
 	end = 0;
 	while (get_next_line(fd, &line) == 1)
 	{
+		length[end++] = ft_strlenmap(line);
 		printf("\033[32m%s\033[0m\n", line);
-		length[end++] = ft_strlenmap(line, ' ');
 	}
 	if (--end < 0)
 		ft_error(1);
