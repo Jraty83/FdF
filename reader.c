@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_validator.c                                    :+:      :+:    :+:   */
+/*   reader.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 13:50:00 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/04 11:58:38 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/04 15:45:35 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int			ft_strlenmap(const char *s)
+int			ft_strlenmap(const char *s, t_data *data)
 {
 	int		i;
 	int		k;
@@ -29,33 +29,50 @@ int			ft_strlenmap(const char *s)
 			i++;
 	}
 //	printf("strlen: %d\ti is: %d\t", k, i);
+	data->line_length = k;
 	return (k);
 }
 
-int		map_validator(int fd)
+void		map_validator(int *llen, t_data *data)
 {
-	char	*line;
-	int		end;
-	int		length[50000];
+	int		i;
 
-	end = 0;
-	while (get_next_line(fd, &line) == 1)
+	if (data->nr_lines == 0)
+		ft_error(2);
+	i = 0;
+	while (llen[i])
 	{
-		length[end++] = ft_strlenmap(line);
-		printf("\033[32m%s\033[0m\n", line);
-	}
-	if (--end < 0)
-		ft_error(1);
-	while (end)
-	{
-		if (length[end] != length[end - 1])
+		if (llen[i] != llen[i + 1] && ((i + 1) != data->nr_lines))
 		{
 			ft_putendl("Found wrong line length. Exiting.");
-			return (0);
+			exit(0);
 		}
 		else
-			end--;
+			i++;
 	}
-	free(line);
+}
+
+int			ft_reader(int fd, t_data *data)
+{
+	char	*line;
+	int		length[50000];
+	int		i;
+	int		ret;
+
+	i = 0;
+	if (!(data->file = (char**)malloc(sizeof(char*) * 50000)))
+		ft_error(3);
+	while ((ret = get_next_line(fd, &line)) == 1)
+	{
+		length[i] = ft_strlenmap(line, data);
+		data->file[i++] = ft_strdup(line);
+		free(line); // NOT REALLY FREEING ANYTHING ?!?
+	}
+	if (ret < 0)
+		ft_error(1);
+	data->file[i] = NULL;
+//	printf("number of lines: [%d]\n", i);
+	data->nr_lines = i;
+	map_validator(length, data);
 	return (1);
 }

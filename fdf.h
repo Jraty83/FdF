@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 15:05:55 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/03 14:48:22 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/04 15:38:52 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,11 @@ typedef struct		s_data
 {
 	void	*mlx;
 	void	*win;
-	void	*image;	// only for background.c ?
-	char	*buffer;	// only for background.c ?
-	char	*line;
-	int		fd;
+	void	*image;
+	char	**file;
 	int		color;
-	int		pixel_bits;	// only for background.c ?
-	int		line_bytes;	// only for background.c ?
-	int		endian;	// only for background.c ?
-	int		pixel;	// only for background.c ?
-	int		x;	// only for background.c ?
-	int		y;	// only for background.c ?
-	int		i;
+	int		nr_lines;
+	int		line_length;
 }					t_data;
 
 # define ESC 27			// esc has an ascii value of 27
@@ -49,7 +42,7 @@ typedef struct		s_data
 # define PURPLE	0x8000FF
 # define ORANGE	0xFF8000
 
-int					map_validator(int fd);
+int					ft_reader(int fd, t_data *data);
 int					draw_line(void *mlx, void *win, int beginX, int beginY, int endX, int endY, int color);
 void				background(t_data *data);
 

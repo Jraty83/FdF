@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 14:09:06 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/03 13:36:08 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/04 15:34:55 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	background(t_data *data)
 {
-		void	*image;
+		// void	*image;
 		char	*buffer;
 		int		pixel_bits;
 		int		line_bytes;
@@ -24,8 +24,8 @@ void	background(t_data *data)
 		int		y;
 
 //		data->color = YELLOW;
-		image = mlx_new_image(data->mlx, 640, 360);
-		buffer = mlx_get_data_addr(image, &pixel_bits, &line_bytes, &endian);
+		data->image = mlx_new_image(data->mlx, 640, 360);
+		buffer = mlx_get_data_addr(data->image, &pixel_bits, &line_bytes, &endian);
 		if (pixel_bits != 32)
 			data->color = mlx_get_color_value(data->mlx, data->color);
 		x = 0;
@@ -54,5 +54,5 @@ void	background(t_data *data)
 				++y;
 			}
 		}
-		mlx_put_image_to_window(data->mlx, data->win, image, 0, 0);
+		mlx_put_image_to_window(data->mlx, data->win, data->image, 0, 0);
 }
