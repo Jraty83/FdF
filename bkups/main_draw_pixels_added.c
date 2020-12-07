@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 12:10:20 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/07 15:47:20 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/07 13:36:50 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ int		main(int argc, char **argv)
 	int		fd;
 //	int		i = 0;	// FOR TESTING
 
-//	data->color = ORANGE;
 	if (!(data = (t_data *)malloc(sizeof(t_data))))
 		ft_error(3);
+//	data->color = BLACK;
 	if (argc == 2)
 	{
 		if ((fd = open(argv[1], O_RDONLY)) < 0)
@@ -62,20 +62,39 @@ int		main(int argc, char **argv)
 		mlx_key_hook(data->win, deal_key, (void*)0);
 		mlx_mouse_hook(data->win, deal_mouse, (void*)0);
 		background(data);
-		draw_pixels(data);
-		printf("OHI");
+
+		int		x = 20, y = 20, len = 0;
+		int		ints = (data->nr_lines * data->line_length);
+		while (ints--)
+		{
+			mlx_pixel_put(data->mlx, data->win, x, y, YELLOW);
+
+			x += 20;
+			if (++len == data->line_length)
+			{
+				len = 0;
+				x = 20;
+				y += 20;
+			}
+		}
 //		mlx_string_put(data->mlx, data->win, 20, 15, RED, "Push 'H' to close help and");
 //		draw_line(data->mlx, data->win, 240, 100, 370, 20, RED);
-//		system("leaks fdf"); // CHECK FOR LEAKS
 		mlx_loop(data->mlx);
 	}
 	ft_putendl_fd("Usage : ./fdf <filename>", 2);
 }
 
 /*
+**	how to pass parameters to data_pixel_put using data_key_hook's (void*)0 ?
+**
+**	use GNL to parse file 42.fdf
+**
 **	https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm
 **
 **	https://qst0.github.io/ft_libgfx/man_data.html
 **
+**	data_pixel_put(data, win, 200, 200, RED);;
+**
 **	LAST COPY FT_ERROR TO OWN LIBFT !!
+**
 */
