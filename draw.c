@@ -6,13 +6,26 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 12:52:04 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/07 15:45:25 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/08 16:05:58 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <math.h>
-#include <mlx.h>
+
+void	instructions(t_data *data)
+{
+	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 15, YELLOW, "ZOOM IN: mouse scroll down");
+	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 35, YELLOW, "ZOOM OUT: mouse scroll up");
+	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 55, YELLOW, "RESET: mouse center button");
+	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 75, YELLOW, "MOVE MAP LEFT: Press key 'left'");
+	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 95, YELLOW, "MOVE MAP UP: Press key 'up'");
+	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 115, YELLOW, "MOVE MAP RIGHT: Press key 'right'");
+	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 135, YELLOW, "MOVE MAP DOWN: Press key 'down'");
+	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 155, YELLOW, "BACKGROUND GREEN: Press key 'g'");
+	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 175, YELLOW, "BACKGROUND RED: Press key 'r'");
+	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 195, YELLOW, "BACKGROUND BLUE: Press key 'b'");
+	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 215, YELLOW, "BACKGROUND BLACK: Press key 'q'");
+}
 
 int 	draw_line(t_data *data, int beginX, int beginY, int endX, int endY, int color)
 {
@@ -42,42 +55,34 @@ int 	draw_line(t_data *data, int beginX, int beginY, int endX, int endY, int col
 void	draw_pixels(t_data *data)
 {
 	int		len;
-	int		gap;
-	int		pix_color;
+//	int		gap;
 	
-	pix_color = RED;
 	len = 0;
-	gap = 20;
-	data->x = 50;
-	data->y = 50;
+//	gap = 20;
 	data->coords = (data->nr_lines * data->line_length);
-	mlx_pixel_put(data->mlx, data->win, data->x, data->y, pix_color);
-	data->x_next = data->x;
-	data->y_next = data->y;
+	mlx_pixel_put(data->mlx, data->win, data->x_orig, data->y_orig, data->line_color);
+	data->x_next = data->x_orig;
+	data->y_next = data->y_orig;
 //	printf("x_orig %d\ty_orig %d\tlen %d\tEI PRINTATA\n", data->x, data->y, len);
 	// printf("x_next %d\ty_next %d\n", data->x_next, data->y_next);
 	while (--data->coords)
 	{
-		data->x_next += gap;
+		data->x_next += data->zoom;
 		if (++len == data->line_length)
 		{
 			len = 0;
-			data->x_next = data->x;
-			data->y_next += gap;
+			data->x_next = data->x_orig;
+			data->y_next += data->zoom;
 		}
 //		printf("x_next %d\ty_next %d\tlen %d\tremaining %d\n", data->x_next, data->y_next, len, data->coords);
-		mlx_pixel_put(data->mlx, data->win, data->x_next, data->y_next, pix_color);
-//		draw_line(data, data->x, data->y, data->x_next, data->y_next, pix_color);
+		mlx_pixel_put(data->mlx, data->win, data->x_next, data->y_next, data->line_color);
 	}
-	// Call draw_line
 }
-/*
-int main()
+
+void	draw(t_data *data)
 {
-    void *mlx = mlx_init();
-    void *win = mlx_new_window(mlx, 640, 360, "Tutorial Window - Draw Line");
-
-    draw_line(mlx, win, 640, 360, 0, 0, 0xFFFFFF);
-
-    mlx_loop(mlx);
-}*/
+	draw_background(data);
+	instructions(data);
+	draw_pixels(data);
+//	draw_line(data, data->x, data->y, data->x_next, data->y_next, pix_color);
+}

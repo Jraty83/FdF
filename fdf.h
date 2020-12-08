@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 15:05:55 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/07 13:59:48 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/08 15:15:51 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,48 @@
 
 typedef struct		s_data
 {
+	int		MAP_HEIGHT;
+	int		MAP_WIDTH;
+	int		TEXT_MARGIN;
 	void	*mlx;
 	void	*win;
 	void	*image;
 	char	**file;
 	int		*height;
-	int		color;
+	int		line_color;
+	int		bg_color;
 	int		nr_lines;
 	int		line_length;
 	int		coords;
-	int		x;
+	int		x_orig;
 	int		x_next;
-	int		y;
+	int		y_orig;
 	int		y_next;
+	int		move;
+	int		zoom;
 }					t_data;
 
-# define ESC 27			// esc has an ascii value of 27
+// KEYS
+# define ESCAPE 53
+// # define X_ESCAPE 0xff1b
+# define X_ESCAPE 65307
+# define BL 98
+# define G 103
+# define P 112
+# define BK 113
+# define R 114
+# define Y 121
+# define LEFT 65361
+# define UP 65362
+# define RIGHT 65363
+# define DOWN 65364
+
+// MOUSE
+# define MOUSE_LEFT 1
+# define MOUSE_CENTER 2
+# define MOUSE_RIGHT 3
+# define MOUSE_SCROLL_DOWN 4
+# define MOUSE_SCROLL_UP 5
 
 // COLORS
 # define BLACK	0x000000
@@ -50,8 +76,9 @@ typedef struct		s_data
 
 int					ft_reader(int fd, t_data *data);
 void				parse_int(t_data *data);
-void				draw_pixels(t_data *data);
-// int					draw_line(void *mlx, void *win, int beginX, int beginY, int endX, int endY, int color);
-void				background(t_data *data);
+void				draw(t_data *data);
+void				draw_background(t_data *data);
+int					deal_key(int key, t_data *data);
+int					deal_mouse(int button, int x, int y, t_data *data);
 
 #endif

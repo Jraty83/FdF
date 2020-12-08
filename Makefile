@@ -6,13 +6,13 @@
 #    By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/07 13:21:08 by jraty             #+#    #+#              #
-#    Updated: 2020/12/07 13:59:32 by jraty            ###   ########.fr        #
+#    Updated: 2020/12/08 10:53:23 by jraty            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
-SRCS = main.c draw.c reader.c background.c parser.c \
+SRCS = main.c draw.c reader.c background.c parser.c events.c \
 
 OBJS = $(SRCS:.c=.o)
 
