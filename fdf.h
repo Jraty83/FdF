@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 15:05:55 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/09 14:29:50 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/09 14:45:04 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,12 @@ typedef struct		s_data
 	int		nr_lines;
 	int		line_length;
 	int		coords;
-	int		x_orig;
-	int		x_next;
-	int		y_orig;
-	int		y_next;
+	int		x_offset;
+	int		x1;
+	int		x2;
+	int		y_offset;
+	int		y1;
+	int		y2;
 	int		move;
 	int		zoom;
 }					t_data;

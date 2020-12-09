@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 10:51:22 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/09 14:30:51 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/09 14:44:36 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ int		deal_key(int key, t_data *data)
 		exit(0);
 	}
 	if (key == LEFT)
-		data->x_orig -= data->move;
+		data->x1 -= data->move;
 	if (key == RIGHT)
-		data->x_orig += data->move;
+		data->x1 += data->move;
 	if (key == UP)
-		data->y_orig -= data->move;
+		data->y1 -= data->move;
 	if (key == DOWN)
-		data->y_orig += data->move;
+		data->y1 += data->move;
 	return (key_colors(key, data));
 }
 
@@ -73,8 +73,8 @@ int		deal_mouse(int button, int x, int y, t_data *data)
 	if (button == MOUSE_CENTER)
 	{
 		data->zoom = 20;
-		data->x_orig = 50;
-		data->y_orig = 50;
+		data->x1 = 50;
+		data->y1 = 50;
 	}
 	draw(data);
 	return (1);

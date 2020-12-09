@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 12:52:04 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/09 14:36:31 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/09 14:45:04 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,25 +59,25 @@ void	draw_pixels(t_data *data)
 	
 	len = 0;
 	data->coords = (data->nr_lines * data->line_length);
-	mlx_pixel_put(data->mlx, data->win, data->x_orig, data->y_orig, RED);
-	data->x_next = data->x_orig;
-	data->y_next = data->y_orig;
-	printf("x_orig %d\ty_orig %d\tlen %d\tremaining %d\n", data->x_orig, data->y_orig, len, data->coords);
-	// printf("x_next %d\ty_next %d\n", data->x_next, data->y_next);
+	mlx_pixel_put(data->mlx, data->win, data->x1, data->y1, RED);
+	data->x2 = data->x1;
+	data->y2 = data->y1;
+	printf("x1 %d\ty1 %d\tlen %d\tremaining %d\n", data->x1, data->y1, len, data->coords);
+	// printf("x2 %d\ty2 %d\n", data->x2, data->y2);
 	while (--data->coords)
 	{
-		data->x_next += data->zoom;
-//		draw_line(data, data->x_orig, data->y_orig, data->x_next, data->y_next, data->line_color);
-//		data->x_orig = data->x_next;
-//		data->y_orig = data->y_next;
+		data->x2 += data->zoom;
+//		draw_line(data, data->x1, data->y1, data->x2, data->y2, data->line_color);
+//		data->x1 = data->x2;
+//		data->y1 = data->y2;
 		if (++len == data->line_length)
 		{
 			len = 0;
-			data->x_next = data->x_orig;
-			data->y_next += data->zoom;
+			data->x2 = data->x1;
+			data->y2 += data->zoom;
 		}
-		printf("x_next %d\ty_next %d\tlen %d\tremaining %d\n", data->x_next, data->y_next, len, data->coords);
-		mlx_pixel_put(data->mlx, data->win, data->x_next, data->y_next, data->line_color);
+		printf("x2 %d\ty2 %d\tlen %d\tremaining %d\n", data->x2, data->y2, len, data->coords);
+		mlx_pixel_put(data->mlx, data->win, data->x2, data->y2, data->line_color);
 	}
 }
 
@@ -86,5 +86,5 @@ void	draw(t_data *data)
 	draw_background(data);
 	instructions(data);
 	draw_pixels(data);
-//	draw_line(data, data->x_orig, data->y_orig, data->x_next, data->y_next, data->line_color);
+//	draw_line(data, data->x1, data->y1, data->x2, data->y2, data->line_color);
 }

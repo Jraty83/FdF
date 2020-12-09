@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_working_08_12_20.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 12:10:20 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/08 15:28:04 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/09 14:44:36 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	init_session(t_data *data)
 	data->win = mlx_new_window(data->mlx, data->MAP_WIDTH, data->MAP_HEIGHT, "my Fdf");
 	data->bg_color = BLACK;
 	data->line_color = GREEN;
-	data->x_orig = 50;
-	data->y_orig = 50;
+	data->x1 = 50;
+	data->y1 = 50;
 	data->zoom = 20;
 	data->move = 5;
 }
