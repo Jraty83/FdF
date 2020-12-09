@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 10:51:22 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/09 14:44:36 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/09 14:55:10 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ int		deal_mouse(int button, int x, int y, t_data *data)
 		data->zoom += 5;
 	if (button == MOUSE_CENTER)
 	{
-		data->zoom = 20;
-		data->x1 = 50;
-		data->y1 = 50;
+		data->zoom = data->zoom_offset;
+		data->x1 = data->x_offset;
+		data->y1 = data->y_offset;
 	}
 	draw(data);
 	return (1);

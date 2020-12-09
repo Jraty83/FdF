@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 12:52:04 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/09 14:45:04 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/09 15:09:32 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	instructions(t_data *data)
 {
 	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 15, YELLOW, "ZOOM IN: mouse scroll down");
 	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 35, YELLOW, "ZOOM OUT: mouse scroll up");
-	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 55, YELLOW, "RESET ZOOM: mouse center button");
+	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 55, YELLOW, "RESET: mouse center button");
 	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 75, YELLOW, "MOVE MAP LEFT: Press key 'left'");
 	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 95, YELLOW, "MOVE MAP UP: Press key 'up'");
 	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 115, YELLOW, "MOVE MAP RIGHT: Press key 'right'");
@@ -62,7 +62,7 @@ void	draw_pixels(t_data *data)
 	mlx_pixel_put(data->mlx, data->win, data->x1, data->y1, RED);
 	data->x2 = data->x1;
 	data->y2 = data->y1;
-	printf("x1 %d\ty1 %d\tlen %d\tremaining %d\n", data->x1, data->y1, len, data->coords);
+//	printf("x1 %d\ty1 %d\tlen %d\tremaining %d\n", data->x1, data->y1, len, data->coords);
 	// printf("x2 %d\ty2 %d\n", data->x2, data->y2);
 	while (--data->coords)
 	{

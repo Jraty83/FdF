@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 12:10:20 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/09 14:44:36 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/09 14:54:54 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void	init_session(t_data *data)
 	data->y_offset = 50;
 	data->x1 = data->x_offset;
 	data->y1 = data->y_offset;
-	data->zoom = 20;
+	data->zoom_offset = 20;
+	data->zoom = data->zoom_offset;
 	data->move = 5;
 }
 
