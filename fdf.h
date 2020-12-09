@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 15:05:55 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/08 15:15:51 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/09 14:29:50 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ typedef struct		s_data
 
 // KEYS
 # define ESCAPE 53
-// # define X_ESCAPE 0xff1b
 # define X_ESCAPE 65307
 # define BL 98
 # define G 103

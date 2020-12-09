@@ -6,33 +6,15 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 10:51:22 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/08 15:56:25 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/09 14:30:51 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int		deal_mouse(int button, int x, int y, t_data *data)
-{
-	ft_putnbr(button);
-	if (button == MOUSE_SCROLL_UP)
-		data->zoom -= 5;
-	if (button == MOUSE_SCROLL_DOWN)
-		data->zoom += 5;
-	if (button == MOUSE_CENTER)
-		data->zoom = 20;
-	draw(data);
-	return (1);
-}
-
-int		deal_key(int key, t_data *data)
+int		key_colors(int key, t_data *data)
 {
 	ft_putnbr(key);
-	if (key == ESCAPE || key == X_ESCAPE)
-	{
-		ft_putstr("\n");
-		exit(0);
-	}
 	if (key == BK)
 	{
 		data->bg_color = BLACK;
@@ -58,6 +40,18 @@ int		deal_key(int key, t_data *data)
 		data->bg_color = BLUE;
 		data->line_color = RED;
 	}
+	draw(data);
+	return (1);
+}
+
+int		deal_key(int key, t_data *data)
+{
+	ft_putnbr(key);
+	if (key == ESCAPE || key == X_ESCAPE)
+	{
+		ft_putstr("\n");
+		exit(0);
+	}
 	if (key == LEFT)
 		data->x_orig -= data->move;
 	if (key == RIGHT)
@@ -66,6 +60,22 @@ int		deal_key(int key, t_data *data)
 		data->y_orig -= data->move;
 	if (key == DOWN)
 		data->y_orig += data->move;
+	return (key_colors(key, data));
+}
+
+int		deal_mouse(int button, int x, int y, t_data *data)
+{
+	ft_putnbr(button);
+	if (button == MOUSE_SCROLL_UP)
+		data->zoom -= 5;
+	if (button == MOUSE_SCROLL_DOWN)
+		data->zoom += 5;
+	if (button == MOUSE_CENTER)
+	{
+		data->zoom = 20;
+		data->x_orig = 50;
+		data->y_orig = 50;
+	}
 	draw(data);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 14:09:06 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/08 15:20:02 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/09 13:35:38 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void		draw_background(t_data *data)
 {
-		// void	*image;
 		char	*buffer;
 		int		pixel_bits;
 		int		line_bytes;
