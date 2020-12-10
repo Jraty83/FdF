@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 12:10:20 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/11 00:39:32 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/11 01:08:41 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,6 @@
 */
 
 #include "fdf.h"
-
-/*
-**	data_pixel_put(data, win, 50, 50, 212);		TEST - REMOVE
-*/
-
-// int		deal_mouse(int button, int x, int y, void *param)
-// {
-// 	ft_putnbr(3);
-// 	return (0);
-// }
-
-// int		deal_key(int key, void *param)
-// {
-// 	ft_putchar('X');
-// 	return (0);
-// }
 
 void	init_session(t_data *data)
 {

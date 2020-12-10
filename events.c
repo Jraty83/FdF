@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 10:51:22 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/11 00:39:55 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/11 01:05:15 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		key_colors(int key, t_data *data)
 {
-	ft_putnbr(key);
+//	ft_putnbr(key);
 	if (key == C)
 	{
 		if (data->bg_color == BLACK)
@@ -49,7 +49,7 @@ int		key_colors(int key, t_data *data)
 
 int		deal_key(int key, t_data *data)
 {
-	ft_putnbr(key);
+//	ft_putnbr(key);
 	if (key == ESCAPE || key == X_ESCAPE)
 	{
 		ft_putstr("\n");
@@ -74,10 +74,10 @@ int		deal_key(int key, t_data *data)
 
 int		deal_mouse(int button, int x, int y, t_data *data)
 {
-	ft_putnbr(button);
+//	ft_putnbr(button);
 	if (button == MOUSE_SCROLL_UP)
 //		data->zoom -= 5;
-		if (data->zoom > data->zoom_offset)
+		if (data->zoom > (data->zoom_offset / 10))
 			data->zoom /= 2;
 	if (button == MOUSE_SCROLL_DOWN)
 //		data->zoom += 5;

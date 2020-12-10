@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 15:05:55 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/11 00:21:35 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/11 00:49:33 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ typedef struct		s_data
 	int		y2;
 	int		move_offset;
 	int		move;
-	int		zoom_offset;
-	int		zoom;
+	float	zoom_offset;
+	float	zoom;
 }					t_data;
 
 // KEYS
