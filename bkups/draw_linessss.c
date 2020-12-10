@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 12:52:04 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/10 13:47:35 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/10 13:04:17 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,40 +57,33 @@ int 	draw_line(t_data *data, int beginX, int beginY, int endX, int endY, int col
 void	draw_pixels(t_data *data)
 {
 	int		len;
-	int		rows;
 	
-	len = 1;
-	rows = data->nr_lines;
-//	data->coords = (data->nr_lines * data->line_length); // DON'S NEED AYNMORE - REMOVE FROM STRUCT
+	len = 0;
+	data->coords = (data->nr_lines * data->line_length);
 	printf("\033[01;32mfirst pixel x1,y1[%d,%d]  x2,y2[%d,%d]\033[0m\n", data->x1, data->y1, data->x2, data->y2);
 //	mlx_pixel_put(data->mlx, data->win, data->x1, data->y1, RED); // DON'T NEED WHEN DRAWING LINES
-	data->x2 = (data->x1 + data->zoom);
-//	data->y2 = data->y1;
-//	printf("x2 %d\ty2 %d\n", data->x2, data->y2);
-	while (rows--)
+	data->x2 = data->x1;
+	data->y2 = data->y1;
+	// printf("x2 %d\ty2 %d\n", data->x2, data->y2);
+//	data->coords = 209;
+	while (data->coords--)
 //	while (--data->coords >= -1)
 	{
-		while (len != data->line_length)
-		{
-			data->y2 = data->y1;
-	//		printf("x_offset %d\tx1 %d\tx2 %d\ny_offset %d\ty1 %d\ty2 %d\n", data->x_offset, data->x1, data->x2, data->y_offset, data->y1, data->y2);
-	//		printf("draw line from x1,y1[%d,%d] to x2,y2[%d,%d]\tlen %d\n", data->x1, data->y1, data->x2, data->y2, len);
-			draw_line(data, data->x1, data->y1, data->x2, data->y2, data->line_color);
-			data->x1 = data->x2; // MOVE THE LINE
-			data->y1 = data->y2;
-			data->x2 += data->zoom;
-	//		printf("len %d\tdata->line length is %d\n", len, data->line_length);
-
-			++len;
-		}
-		if (len == data->line_length)
+		data->x2 += data->zoom;
+//		printf("x_offset %d\tx1 %d\tx2 %d\ny_offset %d\ty1 %d\ty2 %d\n", data->x_offset, data->x1, data->x2, data->y_offset, data->y1, data->y2);
+//		printf("draw line from x1,y1[%d,%d] to x2,y2[%d,%d]\tlen %d\n", data->x1, data->y1, data->x2, data->y2, len);
+		draw_line(data, data->x1, data->y1, data->x2, data->y2, data->line_color);
+		data->x1 = data->x2; // MOVE THE LINE
+		data->y1 = data->y2;
+		printf("len %d\tdata->line length is %d\n", len, data->line_length);
+		if (++len == (data->line_length - 1))
 //		if (++len == data->line_length) // WAS WORKING BEFORE
 		{
-			len = 1;
+			len = 0;
 			data->x1 = data->x_offset;
-			data->x2 = (data->x1 + data->zoom);
+			data->x2 = data->x1;
 			data->y1 += data->zoom;
-//			data->y2 += data->zoom;
+			data->y2 += data->zoom;
 		}
 //		printf("x2 %d\ty2 %d\tlen %d\tremaining %d\n", data->x2, data->y2, len, data->coords);
 //		mlx_pixel_put(data->mlx, data->win, data->x2, data->y2, data->line_color);
