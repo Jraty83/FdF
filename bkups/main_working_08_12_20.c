@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 12:10:20 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/10 10:43:43 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/10 23:29:04 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	init_session(t_data *data)
 	data->mlx = mlx_init();
 	data->MAP_HEIGHT = 600;
 	data->MAP_WIDTH = 1067;
-	data->TEXT_MARGIN = (data->MAP_WIDTH - 200);
+	data->RIGHT_MARGIN = (data->MAP_WIDTH - 200);
 	data->win = mlx_new_window(data->mlx, data->MAP_WIDTH, data->MAP_HEIGHT, "my Fdf");
 	data->bg_color = BLACK;
 	data->line_color = GREEN;

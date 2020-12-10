@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 10:51:22 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/10 22:02:02 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/11 00:15:45 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,12 @@ int		deal_key(int key, t_data *data)
 		data->y_offset -= data->move;
 	if (key == DOWN)
 		data->y_offset += data->move;
+	if (key == Z)
+		if (data->move <= (data->move_offset * 10))
+			data->move *= 2;
+	if (key == X)
+		if (data->move > data->move_offset)
+			data->move /= 2;
 	return (key_colors(key, data));
 }
 
@@ -70,12 +76,17 @@ int		deal_mouse(int button, int x, int y, t_data *data)
 {
 	ft_putnbr(button);
 	if (button == MOUSE_SCROLL_UP)
-		data->zoom -= 5;
+//		data->zoom -= 5;
+		if (data->zoom > data->zoom_offset)
+			data->zoom /= 2;
 	if (button == MOUSE_SCROLL_DOWN)
-		data->zoom += 5;
+//		data->zoom += 5;
+		if (data->zoom <= (data->zoom_offset * 20))
+			data->zoom *= 2;
 	if (button == MOUSE_CENTER)
 	{
 		data->zoom = data->zoom_offset;
+		data->move = data->move_offset;
 		data->x1 = data->x_offset;
 		data->y1 = data->y_offset;
 	}

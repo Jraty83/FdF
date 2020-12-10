@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 15:05:55 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/10 22:00:27 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/10 23:30:12 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ typedef struct		s_data
 {
 	int		MAP_HEIGHT;
 	int		MAP_WIDTH;
-	int		TEXT_MARGIN;
+	int		LEFT_MARGIN;
+	int		RIGHT_MARGIN;
 	void	*mlx;
 	void	*win;
 	void	*image;
@@ -39,6 +40,7 @@ typedef struct		s_data
 	int		y_offset;
 	int		y1;
 	int		y2;
+	int		move_offset;
 	int		move;
 	int		zoom_offset;
 	int		zoom;
@@ -53,7 +55,9 @@ typedef struct		s_data
 # define P 112
 # define BK 113
 # define R 114
+# define X 120
 # define Y 121
+# define Z 122
 # define LEFT 65361
 # define UP 65362
 # define RIGHT 65363

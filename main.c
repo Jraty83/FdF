@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 12:10:20 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/10 13:43:07 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/11 00:17:51 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,19 @@ void	init_session(t_data *data)
 	data->mlx = mlx_init();
 	data->MAP_HEIGHT = 600;
 	data->MAP_WIDTH = 1000; // 1067
-	data->TEXT_MARGIN = (data->MAP_WIDTH - 200);
+	data->LEFT_MARGIN = 10;
+	data->RIGHT_MARGIN = (data->MAP_WIDTH - 200);
 	data->win = mlx_new_window(data->mlx, data->MAP_WIDTH, data->MAP_HEIGHT, "my Fdf");
 	data->bg_color = BLACK;
 	data->line_color = GREEN;
-	data->x_offset = 50;
-	data->y_offset = 50;
-//	data->x1 = data->x_offset;
+	data->x_offset = 10;
+	data->y_offset = 30;
+//	data->x1 = data->x_offset;	// MOVED TO DRAW
 //	data->y1 = data->y_offset;
 	data->zoom_offset = 20;
 	data->zoom = data->zoom_offset;
-	data->move = 5;
+	data->move_offset = 20;
+	data->move = data->move_offset;
 }
 
 int		main(int argc, char **argv)
@@ -72,7 +74,7 @@ int		main(int argc, char **argv)
 		parse_int(data);
 //		while (data->file[i])
 //			printf("\033[32m%s\033[0m\n", data->file[i++]);
-		printf("\nnumber of lines: [%d]\tlength of each line: [%d]\n", data->nr_lines, data->line_length);
+//		printf("\nnumber of lines: [%d]\tlength of each line: [%d]\n", data->nr_lines, data->line_length);
 //		while (data->height[i])
 //			printf("\033[32m%d\033[0m\n", data->height[i++]);
 		draw(data);
