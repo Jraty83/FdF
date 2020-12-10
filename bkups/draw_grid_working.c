@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 12:52:04 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/10 23:29:04 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/11 00:21:21 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	draw_pixels(t_data *data)
 				data->x2 = (data->x1 + data->zoom);
 			}
 			len = 1;
-			data->x1 = data->x_offset;
+			data->x1 = data->x_start;
 			data->x2 = (data->x1 + data->zoom);
 			data->y1 += data->zoom;
 		}
@@ -103,8 +103,8 @@ void	draw_pixels(t_data *data)
 
 void	draw(t_data *data)
 {
-	data->x1 = data->x_offset;
-	data->y1 = data->y_offset;
+	data->x1 = data->x_start;
+	data->y1 = data->y_start;
 	draw_background(data);
 	instructions(data);
 	draw_pixels(data);

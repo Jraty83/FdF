@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 12:10:20 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/11 00:17:51 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/11 00:39:32 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,10 @@ void	init_session(t_data *data)
 	data->line_color = GREEN;
 	data->x_offset = 10;
 	data->y_offset = 30;
-//	data->x1 = data->x_offset;	// MOVED TO DRAW
-//	data->y1 = data->y_offset;
+	data->x_start = data->x_offset;
+	data->y_start = data->y_offset;
+//	data->x1 = data->x_start;	// MOVED TO DRAW
+//	data->y1 = data->y_start;
 	data->zoom_offset = 20;
 	data->zoom = data->zoom_offset;
 	data->move_offset = 20;

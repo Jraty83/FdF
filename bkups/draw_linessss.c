@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 12:52:04 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/10 23:29:04 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/11 00:21:21 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	draw_pixels(t_data *data)
 //	while (--data->coords >= -1)
 	{
 		data->x2 += data->zoom;
-//		printf("x_offset %d\tx1 %d\tx2 %d\ny_offset %d\ty1 %d\ty2 %d\n", data->x_offset, data->x1, data->x2, data->y_offset, data->y1, data->y2);
+//		printf("x_start %d\tx1 %d\tx2 %d\ny_start %d\ty1 %d\ty2 %d\n", data->x_start, data->x1, data->x2, data->y_start, data->y1, data->y2);
 //		printf("draw line from x1,y1[%d,%d] to x2,y2[%d,%d]\tlen %d\n", data->x1, data->y1, data->x2, data->y2, len);
 		draw_line(data, data->x1, data->y1, data->x2, data->y2, data->line_color);
 		data->x1 = data->x2; // MOVE THE LINE
@@ -80,7 +80,7 @@ void	draw_pixels(t_data *data)
 //		if (++len == data->line_length) // WAS WORKING BEFORE
 		{
 			len = 0;
-			data->x1 = data->x_offset;
+			data->x1 = data->x_start;
 			data->x2 = data->x1;
 			data->y1 += data->zoom;
 			data->y2 += data->zoom;
@@ -94,8 +94,8 @@ void	draw_pixels(t_data *data)
 
 void	draw(t_data *data)
 {
-	data->x1 = data->x_offset;
-	data->y1 = data->y_offset;
+	data->x1 = data->x_start;
+	data->y1 = data->y_start;
 	draw_background(data);
 	instructions(data);
 	draw_pixels(data);

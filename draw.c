@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 12:52:04 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/11 00:03:15 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/11 00:48:15 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 void	instructions(t_data *data)
 {
 	mlx_string_put(data->mlx, data->win, data->RIGHT_MARGIN, 20, YELLOW, "ZOOM IN/OUT: MOUSE WHEEL");
-	mlx_string_put(data->mlx, data->win, data->RIGHT_MARGIN, 40, YELLOW, "RESET ZOOM: MOUSE MID BUTTON");
+	mlx_string_put(data->mlx, data->win, data->RIGHT_MARGIN, 40, YELLOW, "RESET STATS: MOUSE MID BUTTON");
 	mlx_string_put(data->mlx, data->win, data->RIGHT_MARGIN, 60, YELLOW, "MOVE MAP: USE ARROW KEYS");
 	mlx_string_put(data->mlx, data->win, data->RIGHT_MARGIN, 80, YELLOW, "MOVEMENT SPEED +/-: PRESS 'Z/X'");
 	mlx_string_put(data->mlx, data->win, data->RIGHT_MARGIN, 100, YELLOW, "CHANGE COLORS: PRESS 'C'");
 	mlx_string_put(data->mlx, data->win, data->RIGHT_MARGIN, 120, YELLOW, "CLOSE WINDOW: PRESS 'ESC'");
 	// STATS
 	mlx_string_put(data->mlx, data->win, data->LEFT_MARGIN, 20, YELLOW, "OFFSET X =");
-	mlx_string_put(data->mlx, data->win, (data->LEFT_MARGIN + 65), 20, YELLOW, ft_itoa(data->x_offset));
+	mlx_string_put(data->mlx, data->win, (data->LEFT_MARGIN + 65), 20, YELLOW, ft_itoa(data->x_start - data->x_offset));
 	mlx_string_put(data->mlx, data->win, (data->LEFT_MARGIN + 110), 20, YELLOW, "OFFSET Y =");
-	mlx_string_put(data->mlx, data->win, (data->LEFT_MARGIN + 175), 20, YELLOW, ft_itoa(data->y_offset));
+	mlx_string_put(data->mlx, data->win, (data->LEFT_MARGIN + 175), 20, YELLOW, ft_itoa(data->y_start - data->y_offset));
 	mlx_string_put(data->mlx, data->win, (data->LEFT_MARGIN + 220), 20, YELLOW, "MOVEMENT SPEED = x");
 	mlx_string_put(data->mlx, data->win, (data->LEFT_MARGIN + 330), 20, YELLOW, ft_itoa(data->move / data->move_offset));
 	mlx_string_put(data->mlx, data->win, (data->LEFT_MARGIN + 360), 20, YELLOW, "ZOOM = x");
@@ -84,7 +84,7 @@ void	draw_pixels(t_data *data)
 			if (rows)
 /*VIKA PYSTY*/	draw_line(data, data->x1, data->y1, data->x1, (data->y2 + data->zoom), data->line_color);
 			len = 1;
-			data->x1 = data->x_offset;
+			data->x1 = data->x_start;
 			data->x2 = (data->x1 + data->zoom);
 			data->y1 += data->zoom;
 		}
@@ -94,8 +94,8 @@ void	draw_pixels(t_data *data)
 
 void	draw(t_data *data)
 {
-	data->x1 = data->x_offset;
-	data->y1 = data->y_offset;
+	data->x1 = data->x_start;
+	data->y1 = data->y_start;
 	draw_background(data);
 	instructions(data);
 	draw_pixels(data);
