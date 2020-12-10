@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 10:51:22 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/10 10:43:43 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/10 11:25:03 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ int		deal_key(int key, t_data *data)
 		exit(0);
 	}
 	if (key == LEFT)
-		data->x1 -= data->move;
+		data->x_offset -= data->move;
 	if (key == RIGHT)
-		data->x1 += data->move;
+		data->x_offset += data->move;
 	if (key == UP)
-		data->y1 -= data->move;
+		data->y_offset -= data->move;
 	if (key == DOWN)
-		data->y1 += data->move;
+		data->y_offset += data->move;
 	return (key_colors(key, data));
 }
 

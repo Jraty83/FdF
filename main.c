@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 12:10:20 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/10 10:43:43 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/10 11:19:20 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	init_session(t_data *data)
 	data->line_color = GREEN;
 	data->x_offset = 50;
 	data->y_offset = 50;
-	data->x1 = data->x_offset;
-	data->y1 = data->y_offset;
+//	data->x1 = data->x_offset;
+//	data->y1 = data->y_offset;
 	data->zoom_offset = 20;
 	data->zoom = data->zoom_offset;
 	data->move = 5;
