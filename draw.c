@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 12:52:04 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/10 22:14:56 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/10 22:26:33 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	draw_pixels(t_data *data)
 {
 	int		len;
 	int		rows;
-	
+
 	len = 1;
 	rows = data->nr_lines;
 //	printf("\033[01;32mfirst pixel x1,y1[%d,%d]  x2,y2[%d,%d]\033[0m\n", data->x1, data->y1, data->x2, data->y2);
@@ -63,13 +63,7 @@ void	draw_pixels(t_data *data)
 			data->y2 = data->y1;
 			draw_line(data, data->x1, data->y1, data->x2, data->y2, data->line_color);
 			if (rows)
-			{
-				data->x2 = data->x1;
-				data->y2 += data->zoom;
-				draw_line(data, data->x1, data->y1, data->x2, data->y2, data->line_color);
-				data->y2 = data->y1;
-				data->x2 = (data->x1 + data->zoom);
-			}
+				draw_line(data, data->x1, data->y1, data->x1, (data->y2 + data->zoom), data->line_color);
 			data->x1 = data->x2; // MOVE THE LINE
 			data->y1 = data->y2;
 			data->x2 += data->zoom;
@@ -78,13 +72,7 @@ void	draw_pixels(t_data *data)
 		if (len == data->line_length)
 		{
 			if (rows)
-			{
-				data->x2 = data->x1;
-				data->y2 += data->zoom;
-				draw_line(data, data->x1, data->y1, data->x2, data->y2, data->line_color);
-				data->y2 = data->y1;
-				data->x2 = (data->x1 + data->zoom);
-			}
+				draw_line(data, data->x1, data->y1, data->x1, (data->y2 + data->zoom), data->line_color);
 			len = 1;
 			data->x1 = data->x_offset;
 			data->x2 = (data->x1 + data->zoom);
