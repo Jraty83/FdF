@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 12:52:04 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/09 15:09:32 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/10 10:53:32 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,18 @@ void	draw_pixels(t_data *data)
 	
 	len = 0;
 	data->coords = (data->nr_lines * data->line_length);
-	mlx_pixel_put(data->mlx, data->win, data->x1, data->y1, RED);
+	printf("\033[01;32mfirst pixel [%d,%d]\033[0m\n", data->x1, data->y1);
+//	mlx_pixel_put(data->mlx, data->win, data->x1, data->y1, RED); // DON'T NEED WHEN DRAWING LINES
 	data->x2 = data->x1;
 	data->y2 = data->y1;
-//	printf("x1 %d\ty1 %d\tlen %d\tremaining %d\n", data->x1, data->y1, len, data->coords);
 	// printf("x2 %d\ty2 %d\n", data->x2, data->y2);
 	while (--data->coords)
+//	while (--data->coords >= -1)
 	{
 		data->x2 += data->zoom;
-//		draw_line(data, data->x1, data->y1, data->x2, data->y2, data->line_color);
+//		printf("x_offset %d\tx1 %d\tx2 %d\ny_offset %d\ty1 %d\ty2 %d\n", data->x_offset, data->x1, data->x2, data->y_offset, data->y1, data->y2);
+		printf("draw line from x1,y1[%d,%d] to x2,y2[%d,%d]\tlen %d\n", data->x1, data->y1, data->x2, data->y2, len);
+		draw_line(data, data->x1, data->y1, data->x2, data->y2, data->line_color);
 //		data->x1 = data->x2;
 //		data->y1 = data->y2;
 		if (++len == data->line_length)
@@ -76,9 +79,10 @@ void	draw_pixels(t_data *data)
 			data->x2 = data->x1;
 			data->y2 += data->zoom;
 		}
-		printf("x2 %d\ty2 %d\tlen %d\tremaining %d\n", data->x2, data->y2, len, data->coords);
+//		printf("x2 %d\ty2 %d\tlen %d\tremaining %d\n", data->x2, data->y2, len, data->coords);
 		mlx_pixel_put(data->mlx, data->win, data->x2, data->y2, data->line_color);
 	}
+	printf("\033[01;31mx1,y1 after pixel draw [%d,%d]\033[0m\n", data->x1, data->y1);
 }
 
 void	draw(t_data *data)
