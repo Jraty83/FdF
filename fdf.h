@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 15:05:55 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/10 10:44:13 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/10 13:56:20 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ typedef struct		s_data
 	int		bg_color;
 	int		nr_lines;
 	int		line_length;
-	int		coords;
 	int		x_offset;
 	int		x1;
 	int		x2;
