@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 12:52:04 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/10 14:43:22 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/10 22:14:56 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,16 @@
 
 void	instructions(t_data *data)
 {
-	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 15, YELLOW, "ZOOM IN: mouse scroll down");
-	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 35, YELLOW, "ZOOM OUT: mouse scroll up");
-	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 55, YELLOW, "RESET SIZE: mouse center button");
-	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 75, YELLOW, "MOVE MAP LEFT: Press key 'left'");
-	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 95, YELLOW, "MOVE MAP UP: Press key 'up'");
-	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 115, YELLOW, "MOVE MAP RIGHT: Press key 'right'");
-	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 135, YELLOW, "MOVE MAP DOWN: Press key 'down'");
-	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 155, YELLOW, "BACKGROUND RED: Press key 'r'");
-	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 175, YELLOW, "BACKGROUND GREEN: Press key 'g'");
-	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 195, YELLOW, "BACKGROUND BLUE: Press key 'b'");
-	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 215, YELLOW, "BACKGROUND PURPLE: Press key 'p'");
-	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 235, YELLOW, "BACKGROUND BLACK: Press key 'q'");
+	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 20, YELLOW, "ZOOM IN/OUT: MOUSE WHEEL");
+	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 40, YELLOW, "RESET ZOOM: MOUSE MID BUTTON");
+	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 60, YELLOW, "MOVE MAP: USE ARROW KEYS");
+	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 80, YELLOW, "CHANGE COLORS: PRESS 'C'");
+	mlx_string_put(data->mlx, data->win, data->TEXT_MARGIN, 100, YELLOW, "CLOSE WINDOW: PRESS 'ESC'");
 }
 
 int 	draw_line(t_data *data, int beginX, int beginY, int endX, int endY, int color)
 {
-	printf("draw line from x1,y1[%d,%d] to x2,y2[%d,%d]\n", data->x1, data->y1, data->x2, data->y2);
+//	printf("draw line from x1,y1[%d,%d] to x2,y2[%d,%d]\n", data->x1, data->y1, data->x2, data->y2);
 	double deltaX = endX - beginX; // 10
 	double deltaY = endY - beginY; // 0
 
@@ -61,7 +54,7 @@ void	draw_pixels(t_data *data)
 	
 	len = 1;
 	rows = data->nr_lines;
-	printf("\033[01;32mfirst pixel x1,y1[%d,%d]  x2,y2[%d,%d]\033[0m\n", data->x1, data->y1, data->x2, data->y2);
+//	printf("\033[01;32mfirst pixel x1,y1[%d,%d]  x2,y2[%d,%d]\033[0m\n", data->x1, data->y1, data->x2, data->y2);
 	data->x2 = (data->x1 + data->zoom);
 	while (rows--)
 	{
@@ -98,7 +91,7 @@ void	draw_pixels(t_data *data)
 			data->y1 += data->zoom;
 		}
 	}
-	printf("\033[01;31mafter pixel draw x1,y1[%d,%d]  x2,y2[%d,%d]\033[0m\n", data->x1, data->y1, data->x2, data->y2);
+//	printf("\033[01;31mafter pixel draw x1,y1[%d,%d]  x2,y2[%d,%d]\033[0m\n", data->x1, data->y1, data->x2, data->y2);
 }
 
 void	draw(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: jraty <jraty@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 10:51:22 by jraty             #+#    #+#             */
-/*   Updated: 2020/12/10 11:25:03 by jraty            ###   ########.fr       */
+/*   Updated: 2020/12/10 22:02:02 by jraty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,33 @@
 int		key_colors(int key, t_data *data)
 {
 	ft_putnbr(key);
-	if (key == BK)
+	if (key == C)
 	{
-		data->bg_color = BLACK;
-		data->line_color = WHITE;
-	}
-	if (key == P)
-	{
-		data->bg_color = PURPLE;
-		data->line_color = GREEN;
-	}
-	if (key == R)
-	{
-		data->bg_color = RED;
-		data->line_color = BLUE;
-	}
-	if (key == G)
-	{
-		data->bg_color = GREEN;
-		data->line_color = PURPLE;
+		if (data->bg_color == BLACK)
+		{
+			data->bg_color = ORANGE;
+			data->line_color = BLUE;
 		}
-	if (key == BL)
-	{
-		data->bg_color = BLUE;
-		data->line_color = RED;
+		else if (data->bg_color == ORANGE)
+		{
+			data->bg_color = GREEN;
+			data->line_color = PURPLE;
+		}
+		else if (data->bg_color == GREEN)
+		{
+			data->bg_color = BLUE;
+			data->line_color = ORANGE;
+		}
+		else if (data->bg_color == BLUE)
+		{
+			data->bg_color = PURPLE;
+			data->line_color = WHITE;
+		}
+		else if (data->bg_color == PURPLE)
+		{
+			data->bg_color = BLACK;
+			data->line_color = GREEN;
+		}
 	}
 	draw(data);
 	return (1);
